@@ -65,18 +65,21 @@ function! CGTestResults()
 	setlocal nobuflisted
 	setlocal nowrap
 	setlocal nonumber
-	setlocal foldmethod=marker
+	setlocal foldmethod=manual
 
 	call append(0, "------------------- CGTest -------------------" )
 	for test in g:gctest#tests[1:-1]
 		if has_key(test, "name")
 			"echo "\n------------------- " . test.name . " -------------------"
 			"echo get(test, "testret", "test not run")
-			call append(line('$'), "------------------- " . test.name . " -------------------" )
-			call append(line('$'), get(test, "testret", "test not run"))
+			call append(line('$'), "[ ------------------- " . test.name . " ------------------- ]" )
+			let test_text = get(test, "testret", "test not run")
+			call append(line('$'), test_text )
+			execute line('$') - len(test_text) . "," line('$') . "fold"
 		endif
 	endfor
 	setlocal nomodifiable
+	foldclose!
 endfunction
 
 function! CGTest()
