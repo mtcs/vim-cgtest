@@ -18,18 +18,18 @@ Dependencies
 Commands
 --------
 
-CGTest - Run all tests and show results in a new window
-CGTestAll - Run all tests using ctest without updating the internal database
-CGTestR <regex> - Run tests matching regular expression passed as parameter
-CGTestRefresh - Run all tests
-CGTestResults - Show test results in a new window
-CGTestResultsV - Show test results verbose in a new window
-CGTestInfoRefresh - Refresh test information
+* CGTest - Run all tests and show results in a new window
+* CGTestAll - Run all tests using ctest without updating the internal database
+* CGTestR <regex> - Run tests matching regular expression passed as parameter
+* CGTestRefresh - Run all tests
+* CGTestResults - Show test results in a new window
+* CGTestResultsV - Show test results verbose in a new window
+* CGTestInfoRefresh - Refresh test information
 
-CGTestF <regex> - Run GTest tests/testcases matching regular expression passed as parameter
-CGTestRefreshR <regex> - Run tests matching a regular expression (TODO)
-CGTestRefreshF <regex> - Run GTest/testcases tests matching a regular expression (TODO)
-CGTestRefreshBroaken - Run all failed tests (TODO)
-CGTestDash - Open test dashboard in a window (TODO)
+* CGTestF <regex> - Run GTest tests/testcases matching regular expression passed as parameter
+* CGTestRefreshR <regex> - Run tests matching a regular expression (TODO)
+* CGTestRefreshF <regex> - Run GTest/testcases tests matching a regular expression (TODO)
+* CGTestRefreshBroaken - Run all failed tests (TODO)
+* CGTestDash - Open test dashboard in a window (TODO)
 
 
