@@ -40,18 +40,48 @@ function! CGTestInfoRefresh()
 	endfor
 endfunction
 
-function! CGTest()
+function! CGTestRefresh()
 	for test in g:gctest#tests[1:-1]
-		echo "Test" . test.name . " - " . test.cmd
-		let test.testret = system('ctest -V --timeout 20 -R ' . test.name )
+		if has_key(test, "name")
+			echo "Test " . test.name . " - " . test.cmd
+			let test.testret = split(system('ctest -V --timeout 20 -R ' . test.name ), "\n")
+		endif
 	endfor
 endfunction
 
 function! CGTestResults()
+	if bufexists(bufname('_CGTest_Results_'))
+		execute g:cgtest#resultwinnr . "wincmd w"
+		setlocal modifiable
+		execute "%d"
+	else
+		silent vsplit _CGTest_Results_
+		let g:cgtest#resultwinnr = winnr()
+	endif
+
+	setlocal buftype=nofile
+	setlocal bufhidden=delete
+	setlocal noswapfile
+	setlocal nobuflisted
+	setlocal nowrap
+	setlocal nonumber
+	setlocal foldmethod=marker
+
+	call append(0, "------------------- CGTest -------------------" )
 	for test in g:gctest#tests[1:-1]
-		echo "\n------------------- " . test.name . " -------------------"
-		echo get(test, "testret", "test not run")
+		if has_key(test, "name")
+			"echo "\n------------------- " . test.name . " -------------------"
+			"echo get(test, "testret", "test not run")
+			call append(line('$'), "------------------- " . test.name . " -------------------" )
+			call append(line('$'), get(test, "testret", "test not run"))
+		endif
 	endfor
+	setlocal nomodifiable
+endfunction
+
+function! CGTest()
+	call CGTestRefresh()
+	call CGTestResults()
 endfunction
 
 nnoremap <leader>cgt :call CGTest()<CR>
@@ -60,8 +90,9 @@ call CGTestInfoRefresh()
 
 command! CGTest call CGTest()
 command! CGTestAll call CGTestAll()
-command! CGTestRegex call CGTestRegex()
 command! CGTestRefresh call CGTestRefresh()
+command! CGTestInfoRefresh call CGTestInfoRefresh()
 command! CGTestResults call CGTestResults()
 command! -nargs=1 CGTestR call CGTestRegex(<f-args>)
+command! -nargs=1 CGTestRegex call CGTestRegex(<f-args>)
 
