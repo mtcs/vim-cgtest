@@ -42,6 +42,12 @@ function! CGTestResultRefresh()
 					let time = split(matchstr(testcont, '<NamedMeasurement type="numeric/double" name="Execution Time">.\{-}</Value>'), '<Value>')[1][0:-9]
 					let output = split(matchstr(testcont, '<Measurement>.\{-}</Value>'), '<Value>')[1][0:-9]
 
+					if !has_key(g:cgtest#testnum, name)
+						echo "Adding ". name
+						g:cgtest#testnum[name] =  len(g:cgtest#tests)
+						call add(g:cgtest#tests, {"name": name} )
+					endif
+
 					" Store results in the variable
 					let testpos = g:cgtest#testnum[name]
 					"echo "(" . testpos . ")" . name . " " . completion . " " . status . " " . time

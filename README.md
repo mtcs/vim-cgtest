@@ -4,6 +4,7 @@ CGTest
 [![Code Climate](https://codeclimate.com/github/mtcs/vim-cgtest/badges/gpa.svg)](https://codeclimate.com/github/mtcs/vim-cgtest)
 [![Donate to MtCS](https://img.shields.io/gratipay/user/mtcs.svg?maxAge=2592000)](https://gratipay.com/~mtcs/)
 
+![CGTest Results](http://imgur.com/a/hDYcg)
 
 __WARNING: This project is brand new and in alpha state, expect heavy changes.__
 
