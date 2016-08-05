@@ -1,11 +1,17 @@
 CGTest
 ======
 
+[![Code Climate](https://codeclimate.com/github/mtcs/vim-cgtest/badges/gpa.svg)](https://codeclimate.com/github/mtcs/vim-cgtest)
+[![Donate to MtCS](https://img.shields.io/gratipay/user/mtcs.svg?maxAge=2592000)](https://gratipay.com/~mtcs/)
+
+
+__WARNING: This project is brand new and in alpha state, expect heavy changes.__
+
 CGTest is a Vim plugin for working with ctest (from cmake) + gtest. It relies on internal vim
-parsers and ctest binary to execute tests and visualize results.
+parsers and ctest command to execute tests and visualize results from XMLs from  CTest and GTest.
 
 It is important to notice that both CTest and GTest have their own definition of 'test'. When we say
-the we run a 'test', we are referencing CTest tests, when referencing GTest tests we will say 'GTest
+the we run a test binary file, we are referencing CTest tests, when referencing GTest tests we will say 'GTest
 test'
 
 Dependencies
